@@ -1,5 +1,5 @@
-import { prisma } from '../../lib/prisma'
-import TrekCard from '../../components/TrekCard'
+import { prisma } from '../../../lib/prisma'
+import TrekCard from '../../../components/TrekCard'
 
 async function getAllTreks() {
   try {

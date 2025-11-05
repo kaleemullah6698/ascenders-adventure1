@@ -1,7 +1,9 @@
-import { prisma } from '../lib/prisma'
-import TrekCard from '../components/TrekCard'
-import FilterPanel from '../components/FilterPanel'
-import ClientWrapper from '../components/ClientWrapper'
+import { prisma } from '../../lib/prisma'
+import TrekCard from '../../components/TrekCard'
+import FilterPanel from '../../components/FilterPanel'
+import ClientWrapper from '../../components/ClientWrapper'
+
+
 
 async function getTreks(filters: any = {}) {
   try {
