@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Trek {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  image       String
+  duration    Int
+  difficulty  Difficulty
+  minCost     Int
+  maxCost     Int
+  season      Season[]
+  region      Region
+  serviceType ServiceType
+  bestMonths  String[]
+  elevation   Int
+  distance    Float
+  groupSize   Int
+  highlights  String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([difficulty])
+  @@index([region])
+  @@index([serviceType])
+}
+
+enum Difficulty {
+  EASY
+  MODERATE
+  HARD
+  EXTREME
+}
+
+enum Season {
+  SPRING
+  SUMMER
+  AUTUMN
+  WINTER
+}
+
+enum Region {
+  NORTHERN_AREAS
+  KASHMIR
+  KHYBER_PAKHTUNKHWA
+  BALOCHISTAN
+  PUNJAB
+  SINDH
+  GILGIT_BALTISTAN
+}
+
+enum ServiceType {
+  BASIC
+  STANDARD
+  ELITE
+  PREMIUM
+}
