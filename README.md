@@ -1,36 +1,144 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ascenders Adventure
+
+A modern full-stack web application for discovering and exploring trek adventures. Built with Next.js 15, Ascenders Adventure provides an intuitive platform for users to browse, filter, and learn about various trekking destinations with advanced search capabilities and responsive design.
+
+## Overview
+
+Ascenders Adventure leverages contemporary web technologies to deliver a seamless user experience for trek exploration. The application combines server-side rendering, robust database management, and secure authentication to create a comprehensive trekking discovery platform.
+
+## Key Features
+
+- **Advanced Trek Discovery**: Browse and explore a curated collection of trek adventures with detailed information
+- **Smart Filtering System**: Filter treks by difficulty, duration, location, and other relevant criteria
+- **Secure Authentication**: User authentication powered by NextAuth.js with Prisma adapter
+- **Responsive Design**: Fully optimized interface that works seamlessly across all devices
+- **Modern Stack**: Built on Next.js 15 with server-side rendering and static site generation
+- **Modular Architecture**: Component-based structure for maintainability and scalability
+- **Type-Safe Database**: Prisma ORM for reliable and type-safe database operations
+
+## Technology Stack
+
+**Frontend**
+- Next.js 15 (React Framework)
+- Tailwind CSS (Styling)
+- Lucide (Icons)
+- TypeScript
+
+**Backend**
+- Next.js API Routes
+- Prisma ORM
+- NextAuth.js (Authentication)
+- PostgreSQL/MySQL (Database)
+
+**Development Tools**
+- ESLint
+- PostCSS
+- TypeScript
+
+## Project Structure
+```
+ascenders-adventure1/
+├── src/
+│   └── app/
+│       ├── globals.css
+│       ├── layout.tsx
+│       ├── page.tsx
+│       ├── about/
+│       ├── contact/
+│       └── treks/
+│           ├── page.tsx
+│           └── [id]/
+├── components/
+│   ├── TrekCard.tsx
+│   ├── FilterPanel.tsx
+│   └── ...
+├── prisma/
+│   ├── schema.prisma
+│   └── seed.ts
+├── public/
+├── .env
+├── next.config.ts
+├── package.json
+└── tailwind.config.ts
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18.x or higher
+- npm or yarn package manager
+- PostgreSQL or MySQL database
+
+### Installation
 ```bash
+# Clone the repository
+git clone https://github.com/kaleemullah6698/ascenders-adventure1.git
+
+# Navigate to project directory
+cd ascenders-adventure1
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+# Create a .env file and configure your database and authentication credentials
+
+# Generate Prisma Client
+npx prisma generate
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env` file in the root directory with the following variables:
+```env
+DATABASE_URL="your_database_connection_string"
+NEXTAUTH_SECRET="your_nextauth_secret"
+NEXTAUTH_URL="http://localhost:3000"
+```
 
-## Learn More
+## Available Scripts
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+npx prisma studio    # Open Prisma Studio
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Contributing
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is currently private. For collaboration opportunities or inquiries, please contact the repository owner.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Core Contributors
 
-## Deploy on Vercel
+- **Mahd Umer** - Developer 
+- **Kaleem Ullah** - Developer
+- **Zahra** - Developer
+- **Aleen Zia** - Developer
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Documentation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For more information about the technologies used in this project:
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Prisma Documentation](https://www.prisma.io/docs)
+- [NextAuth.js Documentation](https://next-auth.js.org)
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+
+## License
+
+This project is private and proprietary. All rights reserved.
+
+## Support
+
+For questions, issues, or feature requests, please contact the project maintainers or open an issue in the repository.
+
+---
+
+**Built with Next.js** | **Powered by Prisma** | **Secured with NextAuth.js**
