@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
 
     // If you need to search by region (enum), you might need to filter client-side
     // or convert enum values to string in the query
-    let filteredTreks = trek;
+    let filteredTreks = treks;
     
     if (query) {
       filteredTreks = treks.filter(trek => 
