@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation'
 import { Calendar, Users, MapPin, Mountain, Star, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-import { prisma } from '../../../lib/prisma'
-import TrekCard from '../../../components/TrekCard'
+import { prisma } from '../../../../lib/prisma'
+import TrekCard from '../../../../components/TrekCard'
 
 async function getTrek(id: string) {
   try {
