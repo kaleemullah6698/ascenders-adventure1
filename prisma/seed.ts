@@ -13,41 +13,56 @@ async function main() {
     console.log('🗄️ Creating 100+ treks across Pakistan...')
 
     const treks = [
-      // Extreme Treks (15)
-      {
-        name: "K2 Base Camp Trek",
-        description: "The ultimate trekking challenge to the base of the world's second highest peak through Concordia.",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
-        duration: 18,
-        difficulty: Difficulty.EXTREME,
-        minCost: 180000,
-        maxCost: 250000,
-        season: [Season.SUMMER],
-        region: Region.NORTHERN_AREAS,
-        serviceType: ServiceType.ELITE,
-        bestMonths: ["June", "July", "August"],
-        elevation: 5000,
-        distance: 165,
-        groupSize: 8,
-        highlights: ["Concordia", "Baltoro Glacier", "K2 View", "Gondogoro La"]
-      },
-      {
-        name: "Nanga Parbat Base Camp",
-        description: "Challenging trek to the base of the Killer Mountain via Fairy Meadows.",
-        image: "https://images.unsplash.com/photo-1464822759844-d62dda5f7b1c?w=800",
-        duration: 14,
-        difficulty: Difficulty.EXTREME,
-        minCost: 120000,
-        maxCost: 180000,
-        season: [Season.SUMMER],
-        region: Region.NORTHERN_AREAS,
-        serviceType: ServiceType.ELITE,
-        bestMonths: ["July", "August"],
-        elevation: 4200,
-        distance: 110,
-        groupSize: 6,
-        highlights: ["Diamir Face", "Rakhiot Glacier", "Nanga Parbat Views"]
-      },
+  // THALO PASS TREK - MUST BE FIRST
+  {
+    name: "Thalo Pass Trek",
+    description: "An adventurous trek through the beautiful Dir/Chitral region...",
+    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800",
+    duration: 5,
+    difficulty: Difficulty.HARD,
+    minCost: 100000,
+    maxCost: 140000,
+    season: [Season.SUMMER],
+    region: Region.CHITRAL,
+    serviceType: ServiceType.STANDARD,
+    bestMonths: ["June", "July", "August"],
+    elevation: 4250,
+    distance: 60,
+    groupSize: 8,
+    highlights: [
+      "Meadows of Kumrat",
+      "Zaghi Lake", 
+      "Bashkar Lake",
+      "Wild Flower",
+      "Rainbow Waterfall",
+      "Kumrat Valley",
+      "Sor Laspur"
+    ]
+  },
+  // LOHIGOL PASS - MUST BE SECOND
+  {
+    name: "Lohigol Pass",
+    description: "A relatively shorter but equally mesmerizing trek through Chitral's stunning landscapes...",
+    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800",
+    duration: 3,
+    difficulty: Difficulty.MODERATE,
+    minCost: 70000,
+    maxCost: 90000,
+    season: [Season.SUMMER],
+    region: Region.CHITRAL,
+    serviceType: ServiceType.STANDARD,
+    bestMonths: ["May", "June", "July"],
+    elevation: 4300,
+    distance: 39,
+    groupSize: 8,
+    highlights: [
+      "Lush Green Meadows",
+      "Golen Valley",
+      "Madaklasht Valley",
+      "Golen Lake",
+      "Lohigol Pass"
+    ]
+  },
       {
         name: "Gasherbrum IV Expedition",
         description: "Technical expedition to one of the most difficult 8000m peaks.",

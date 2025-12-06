@@ -54,6 +54,9 @@ enum Region {
   PUNJAB
   SINDH
   GILGIT_BALTISTAN
+  CHITRAL           // Add this for both treks
+  // If you want DIR_CHITRAL separately, add:
+  // DIR_CHITRAL
 }
 
 enum ServiceType {
