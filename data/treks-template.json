@@ -1,0 +1,5 @@
+{
+  "template": "Data Import System - JSON format for trek imports",
+  "version": "1.0",
+  "instructions": "Place trek data here for bulk import"
+}

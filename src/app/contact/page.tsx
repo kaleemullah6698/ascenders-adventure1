@@ -1,127 +1,184 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { Mail, Phone, MapPin } from 'lucide-react'
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  Facebook,
+  Instagram,
+  Youtube,
+} from "lucide-react";
 
-export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  })
+export default function ContactUsPage() {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission here
-    alert('Thank you for your message! We will get back to you soon.')
-    setFormData({ name: '', email: '', message: '' })
-  }
+    e.preventDefault();
+
+    if (!form.name || !form.email || !form.message) {
+      setStatus("error");
+      return;
+    }
+
+    // Simulate success
+    setStatus("success");
+    setForm({ name: "", email: "", phone: "", subject: "", message: "" });
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Get in touch with our team to plan your next adventure
-          </p>
-        </div>
+    <main className="max-w-6xl mx-auto px-6 py-20 space-y-16">
+      {/* Page Header */}
+      <section className="text-center">
+        <h1 className="text-4xl font-bold text-[#16a34a] mb-4">Contact Us</h1>
+        <p className="text-gray-600 text-lg">
+          Have questions? We're here to help you start your next adventure.
+        </p>
+      </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Information */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Get in Touch</h2>
-            
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <MapPin className="h-6 w-6 text-green-600 mt-1 mr-4" />
-                <div>
-                  <h3 className="font-semibold text-gray-900">Address</h3>
-                  <p className="text-gray-600">Adventure Street, F-7<br />Islamabad, Pakistan</p>
-                </div>
-              </div>
+      {/* Contact Info + Form */}
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        {/* Contact Information */}
+        <div className="space-y-6">
+          <h2 className="text-2xl font-semibold">Get in Touch</h2>
 
-              <div className="flex items-start">
-                <Phone className="h-6 w-6 text-green-600 mt-1 mr-4" />
-                <div>
-                  <h3 className="font-semibold text-gray-900">Phone</h3>
-                  <p className="text-gray-600">+92 300 123 4567<br />+92 51 123 4567</p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <Mail className="h-6 w-6 text-green-600 mt-1 mr-4" />
-                <div>
-                  <h3 className="font-semibold text-gray-900">Email</h3>
-                  <p className="text-gray-600">info@ascendersadventure.com<br />bookings@ascendersadventure.com</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 p-6 bg-green-50 rounded-lg">
-              <h3 className="font-semibold text-green-900 mb-2">Office Hours</h3>
-              <p className="text-green-800">Monday - Saturday: 9:00 AM - 6:00 PM</p>
-              <p className="text-green-800">Sunday: 10:00 AM - 4:00 PM</p>
-            </div>
+          <div className="flex items-center gap-4">
+            <MapPin className="text-[#16a34a]" />
+            <p>Office #12, Adventure Plaza, Islamabad, Pakistan</p>
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send us a Message</h2>
-            
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  required
-                />
-              </div>
+          <div className="flex items-center gap-4">
+            <Phone className="text-[#16a34a]" />
+            <p>+92 300 1234567</p>
+          </div>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  required
-                />
-              </div>
+          <div className="flex items-center gap-4">
+            <Mail className="text-[#16a34a]" />
+            <p>support@ascenders.com</p>
+          </div>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  rows={6}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
-                  required
-                />
-              </div>
+          <div className="flex items-center gap-4">
+            <Clock className="text-[#16a34a]" />
+            <p>Mon–Sat: 9:00 AM – 6:00 PM</p>
+          </div>
 
-              <button
-                type="submit"
-                className="w-full bg-green-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-700 transition-colors"
-              >
-                Send Message
-              </button>
-            </form>
+          {/* Social Media */}
+          <div className="pt-6">
+            <h3 className="text-xl font-semibold mb-3">Follow Us</h3>
+            <div className="flex gap-4">
+              <Link href="#" className="text-[#16a34a] hover:text-green-700">
+                <Facebook />
+              </Link>
+              <Link href="#" className="text-[#16a34a] hover:text-green-700">
+                <Instagram />
+              </Link>
+              <Link href="#" className="text-[#16a34a] hover:text-green-700">
+                <Youtube />
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  )
+
+        {/* Contact Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white p-6 shadow-lg rounded-lg space-y-4 border"
+        >
+          <h2 className="text-2xl font-semibold mb-4 text-[#16a34a]">
+            Send Us a Message
+          </h2>
+
+          <input
+            name="name"
+            type="text"
+            placeholder="Full Name"
+            className="w-full border p-3 rounded-md"
+            value={form.name}
+            onChange={handleChange}
+          />
+
+          <input
+            name="email"
+            type="email"
+            placeholder="Email Address"
+            className="w-full border p-3 rounded-md"
+            value={form.email}
+            onChange={handleChange}
+          />
+
+          <input
+            name="phone"
+            type="text"
+            placeholder="Phone Number"
+            className="w-full border p-3 rounded-md"
+            value={form.phone}
+            onChange={handleChange}
+          />
+
+          <input
+            name="subject"
+            type="text"
+            placeholder="Subject"
+            className="w-full border p-3 rounded-md"
+            value={form.subject}
+            onChange={handleChange}
+          />
+
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            className="w-full border p-3 rounded-md h-32"
+            value={form.message}
+            onChange={handleChange}
+          ></textarea>
+
+          {/* Status Messages */}
+          {status === "success" && (
+            <p className="text-green-600">Message sent successfully!</p>
+          )}
+          {status === "error" && (
+            <p className="text-red-600">Please fill required fields.</p>
+          )}
+
+          <button
+            type="submit"
+            className="w-full bg-[#16a34a] text-white py-3 rounded-md font-semibold shadow-md hover:bg-green-700"
+          >
+            Send Message
+          </button>
+        </form>
+      </section>
+
+      {/* Map Section */}
+      <section>
+        <h2 className="text-2xl font-semibold mb-4">Our Location</h2>
+
+        <Image
+          src="https://placehold.co/900x400?text=Map+Placeholder"
+          alt="Map Location"
+          width={900}
+          height={400}
+          className="rounded-lg shadow-md"
+          unoptimized
+        />
+      </section>
+    </main>
+  );
 }
