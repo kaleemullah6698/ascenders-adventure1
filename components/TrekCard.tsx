@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Calendar, Users, MapPin } from 'lucide-react'
 
 interface TrekCardProps {
@@ -36,10 +37,11 @@ export default function TrekCard({ trek }: TrekCardProps) {
     <Link href={`/treks/${trek.id}`}>
       <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer">
         <div className="relative h-48 bg-gray-200">
-          <img
+          <Image
             src={trek.image}
             alt={trek.name}
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
           />
           <div className="absolute top-2 right-2">
             <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(trek.difficulty)}`}>

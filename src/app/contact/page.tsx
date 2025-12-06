@@ -49,7 +49,7 @@ export default function ContactUsPage() {
       <section className="text-center">
         <h1 className="text-4xl font-bold text-[#16a34a] mb-4">Contact Us</h1>
         <p className="text-gray-600 text-lg">
-          Have questions? We're here to help you start your next adventure.
+          Have questions? We&apos;re here to help you start your next adventure.
         </p>
       </section>
 

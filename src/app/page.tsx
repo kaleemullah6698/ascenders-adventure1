@@ -1,13 +1,64 @@
 import { prisma } from '../../lib/prisma'
-import TrekCard from '../../components/TrekCard'
 import FilterPanel from '../../components/FilterPanel'
 import ClientWrapper from '../../components/ClientWrapper'
 
+// Define enums matching your schema
+enum Difficulty {
+  EASY = 'EASY',
+  MODERATE = 'MODERATE',
+  HARD = 'HARD',
+  EXTREME = 'EXTREME'
+}
 
+enum Season {
+  SPRING = 'SPRING',
+  SUMMER = 'SUMMER',
+  AUTUMN = 'AUTUMN',
+  WINTER = 'WINTER'
+}
 
-async function getTreks(filters: any = {}) {
+enum Region {
+  NORTHERN_AREAS = 'NORTHERN_AREAS',
+  KASHMIR = 'KASHMIR',
+  KHYBER_PAKHTUNKHWA = 'KHYBER_PAKHTUNKHWA',
+  BALOCHISTAN = 'BALOCHISTAN',
+  PUNJAB = 'PUNJAB',
+  SINDH = 'SINDH',
+  GILGIT_BALTISTAN = 'GILGIT_BALTISTAN',
+  CHITRAL = 'CHITRAL'
+}
+
+enum ServiceType {
+  BASIC = 'BASIC',
+  STANDARD = 'STANDARD',
+  ELITE = 'ELITE',
+  PREMIUM = 'PREMIUM'
+}
+
+interface Filters {
+  difficulties: Difficulty[]  // Use enum type
+  seasons: Season[]          // Use enum type
+  serviceTypes: ServiceType[] // Use enum type
+  regions: Region[]          // Use enum type
+  months: string[]           // months are strings in your schema (bestMonths: String[])
+  minDuration: number
+  maxDuration: number
+}
+
+// Or better, import Prisma types directly:
+// import type { Difficulty, Season, Region, ServiceType } from '@prisma/client'
+
+async function getTreks(filters: Filters = {
+  difficulties: [],
+  seasons: [],
+  serviceTypes: [],
+  regions: [],
+  months: [],
+  minDuration: 1,
+  maxDuration: 30
+}) {
   try {
-    const where: any = {}
+    const where: any = {}  // Use 'any' or Prisma.TrekWhereInput if imported
 
     if (filters.difficulties?.length > 0) {
       where.difficulty = { in: filters.difficulties }
@@ -57,12 +108,24 @@ export default async function HomePage({ searchParams }: HomePageProps) {
   // Fix: Await searchParams
   const params = await searchParams
   
+  // Helper function to parse enum values safely
+  const parseEnumArray = <T extends string>(value: string | string[] | undefined, enumValues: Record<string, T>): T[] => {
+    if (!value) return []
+    
+    const stringValues = typeof value === 'string' ? value.split(',') : value
+    const validValues = Object.values(enumValues) as T[]
+    
+    return stringValues
+      .filter(val => val && validValues.includes(val as T))
+      .map(val => val as T)
+  }
+
   // Parse filter parameters from URL
-  const filters = {
-    difficulties: typeof params.difficulties === 'string' ? params.difficulties.split(',') : [],
-    seasons: typeof params.seasons === 'string' ? params.seasons.split(',') : [],
-    serviceTypes: typeof params.serviceTypes === 'string' ? params.serviceTypes.split(',') : [],
-    regions: typeof params.regions === 'string' ? params.regions.split(',') : [],
+  const filters: Filters = {
+    difficulties: parseEnumArray(params.difficulties, Difficulty),
+    seasons: parseEnumArray(params.seasons, Season),
+    serviceTypes: parseEnumArray(params.serviceTypes, ServiceType),
+    regions: parseEnumArray(params.regions, Region),
     minDuration: parseInt(typeof params.minDuration === 'string' ? params.minDuration : '1'),
     maxDuration: parseInt(typeof params.maxDuration === 'string' ? params.maxDuration : '30'),
     months: typeof params.months === 'string' ? params.months.split(',') : []
@@ -80,7 +143,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
               Ascenders Adventure
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-green-200">
-              Trekking & Mountaineer Services - Discover Pakistan's Majestic Mountains
+              Trekking & Mountaineer Services - Discover Pakistan&apos;s Majestic Mountains
             </p>
             <a href="#treks" className="bg-white text-green-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition-colors inline-block">
               Explore 100+ Treks

@@ -106,7 +106,7 @@ export default function AboutUsPage() {
           Safety, sustainability, and unforgettable experiences are at the heart of
           everything we do.
         </p>
-        <Link href="/contact-us" className="bg-white text-[#16a34a] px-6 py-3 rounded-md shadow-md hover:bg-gray-100 transition">
+        <Link href="/contact" className="bg-white text-[#16a34a] px-6 py-3 rounded-md shadow-md hover:bg-gray-100 transition">
           Get in Touch
         </Link>
       </section>

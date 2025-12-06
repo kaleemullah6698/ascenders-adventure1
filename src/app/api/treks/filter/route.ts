@@ -1,5 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '../../../../../lib/prisma'
+import { Difficulty, Season, ServiceType, Region } from '@prisma/client'
+
+interface WhereClause {
+  AND?: Array<{
+    difficulty?: { in: Difficulty[] }
+    season?: { hasSome: Season[] }
+    serviceType?: { in: ServiceType[] }
+    region?: { in: Region[] }
+    bestMonths?: { hasSome: string[] }
+    duration?: { gte: number; lte: number }
+  }>
+}
 
 export async function GET(request: NextRequest) {
   try {
@@ -25,36 +37,36 @@ export async function GET(request: NextRequest) {
     })
 
     // Build the WHERE clause
-    const where: any = {
+    const where: WhereClause = {
       AND: []
     }
 
     if (difficulties.length > 0) {
-      where.AND.push({
-        difficulty: { in: difficulties }
+      where.AND!.push({
+        difficulty: { in: difficulties as Difficulty[] }
       })
     }
 
     if (seasons.length > 0) {
-      where.AND.push({
-        season: { hasSome: seasons }
+      where.AND!.push({
+        season: { hasSome: seasons as Season[] }
       })
     }
 
     if (serviceTypes.length > 0) {
-      where.AND.push({
-        serviceType: { in: serviceTypes }
+      where.AND!.push({
+        serviceType: { in: serviceTypes as ServiceType[] }
       })
     }
 
     if (regions.length > 0) {
-      where.AND.push({
-        region: { in: regions }
+      where.AND!.push({
+        region: { in: regions as Region[] }
       })
     }
 
     if (minDuration > 1 || maxDuration < 30) {
-      where.AND.push({
+      where.AND!.push({
         duration: {
           gte: minDuration,
           lte: maxDuration
@@ -63,13 +75,13 @@ export async function GET(request: NextRequest) {
     }
 
     if (months.length > 0) {
-      where.AND.push({
+      where.AND!.push({
         bestMonths: { hasSome: months }
       })
     }
 
     // Remove AND if no filters are applied
-    if (where.AND.length === 0) {
+    if (where.AND!.length === 0) {
       delete where.AND
     }
 

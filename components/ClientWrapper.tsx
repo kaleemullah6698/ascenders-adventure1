@@ -1,13 +1,42 @@
 'use client'
 
-import { createContext, useContext, useState, useEffect } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { createContext, useContext, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import TrekCard from './TrekCard'
 
+interface Trek {
+  id: string
+  name: string
+  description: string
+  image: string
+  duration: number
+  difficulty: string
+  minCost: number
+  maxCost: number
+  season: string[]
+  region: string
+  serviceType: string
+  bestMonths: string[]
+  elevation: number
+  distance: number
+  groupSize: number
+  highlights: string[]
+}
+
+interface Filters {
+  difficulties: string[]
+  seasons: string[]
+  serviceTypes: string[]
+  regions: string[]
+  months: string[]
+  minDuration: number
+  maxDuration: number
+}
+
 interface FilterContextType {
-  treks: any[]
-  filters: any
-  setFilters: (filters: any) => void
+  treks: Trek[]
+  filters: Filters
+  setFilters: (filters: Filters) => void
   loading: boolean
 }
 
@@ -27,17 +56,16 @@ export default function ClientWrapper({
   initialFilters 
 }: { 
   children: React.ReactNode
-  initialTreks: any[]
-  initialFilters: any
+  initialTreks: Trek[]
+  initialFilters: Filters
 }) {
-  const [treks, setTreks] = useState<any[]>(initialTreks)
-  const [filters, setFiltersState] = useState(initialFilters)
+  const [treks, setTreks] = useState<Trek[]>(initialTreks)
+  const [filters, setFiltersState] = useState<Filters>(initialFilters)
   const [loading, setLoading] = useState(false)
   const router = useRouter()
-  const searchParams = useSearchParams()
 
   // Update filters and trigger API call
-  const setFilters = async (newFilters: any) => {
+  const setFilters = async (newFilters: Filters) => {
     setFiltersState(newFilters)
     setLoading(true)
     

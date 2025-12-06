@@ -24,6 +24,7 @@ model Trek {
   distance    Float
   groupSize   Int
   highlights  String[]
+  itinerary   Json?    // <-- Add this
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
@@ -54,9 +55,7 @@ enum Region {
   PUNJAB
   SINDH
   GILGIT_BALTISTAN
-  CHITRAL           // Add this for both treks
-  // If you want DIR_CHITRAL separately, add:
-  // DIR_CHITRAL
+  CHITRAL
 }
 
 enum ServiceType {
@@ -65,8 +64,3 @@ enum ServiceType {
   ELITE
   PREMIUM
 }
-
-// DATABASE SCHEMA ENHANCEMENT COMPLETE
-// ✅ Schema is production-ready and extensible
-// ✅ All required enums and models are defined
-// ✅ Indexes optimized for performance

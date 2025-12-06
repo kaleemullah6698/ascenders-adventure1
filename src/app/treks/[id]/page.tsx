@@ -1,8 +1,8 @@
 import { notFound } from 'next/navigation'
 import { Calendar, Users, MapPin, Mountain, Star, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
-import { prisma } from '../../../lib/prisma'
-import TrekCard from '../../../components/TrekCard'
+import { prisma } from '../../../../lib/prisma'
+import TrekCard from '../../../../components/TrekCard'
 
 async function getTrek(id: string) {
   try {
@@ -60,14 +60,29 @@ export default async function TrekDetailPage({ params }: { params: { id: string 
   }
 
   // Parse itinerary if it's a string
-  let itineraryData = []
+  // Parse itinerary safely
+// Define the expected itinerary structure
+type Itinerary = {
+  days: {
+    day: number
+    activities: string[]
+  }[]
+}
+
+let itineraryData: Itinerary['days'] = []
+
+if ('itinerary' in trek && trek.itinerary) {
   try {
-    itineraryData = typeof trek.itinerary === 'string' 
-      ? JSON.parse(trek.itinerary)?.days || []
-      : trek.itinerary?.days || []
+    const parsedItinerary: Itinerary = typeof trek.itinerary === 'string'
+      ? JSON.parse(trek.itinerary)
+      : trek.itinerary
+
+    itineraryData = parsedItinerary?.days || []
   } catch {
     itineraryData = []
   }
+}
+
 
   return (
     <div className="min-h-screen bg-gray-50">

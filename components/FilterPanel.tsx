@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { Filter, X } from 'lucide-react'
 import DifficultyFilter from './DifficultyFilter'
 import SeasonFilter from './SeasonFilter'
@@ -10,12 +9,21 @@ import DurationFilter from './DurationFilter'
 import MonthFilter from './MonthFilter'
 import { useFilter } from './ClientWrapper'
 
+interface Filters {
+  difficulties: string[]
+  seasons: string[]
+  serviceTypes: string[]
+  regions: string[]
+  months: string[]
+  minDuration: number
+  maxDuration: number
+}
+
 export default function FilterPanel({ trekCount }: { trekCount: number }) {
   const { filters, setFilters } = useFilter()
-  const [isOpen, setIsOpen] = useState(false)
 
   // Ensure filters have default values
-  const safeFilters = {
+  const safeFilters: Filters = {
     difficulties: filters?.difficulties || [],
     seasons: filters?.seasons || [],
     serviceTypes: filters?.serviceTypes || [],
@@ -37,7 +45,7 @@ export default function FilterPanel({ trekCount }: { trekCount: number }) {
     })
   }
 
-  const handleFilterChange = (newFilters: any) => {
+  const handleFilterChange = (newFilters: Filters) => {
     setFilters(newFilters)
   }
 

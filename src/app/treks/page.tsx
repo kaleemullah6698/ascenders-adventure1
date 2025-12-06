@@ -39,7 +39,7 @@ export default async function AllTreksPage() {
             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-8 max-w-2xl mx-auto">
               <h3 className="text-xl font-semibold text-yellow-800 mb-2">No Treks Available</h3>
               <p className="text-yellow-700">
-                We're having trouble loading the trek data. Please try again later.
+                We&apos;re having trouble loading the trek data. Please try again later.
               </p>
             </div>
           </div>
