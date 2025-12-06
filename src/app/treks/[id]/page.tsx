@@ -61,28 +61,27 @@ export default async function TrekDetailPage({ params }: { params: { id: string 
 
   // Parse itinerary if it's a string
   // Parse itinerary safely
-// Define the expected itinerary structure
-type Itinerary = {
-  days: {
-    day: number
-    activities: string[]
-  }[]
-}
-
-let itineraryData: Itinerary['days'] = []
-
-if ('itinerary' in trek && trek.itinerary) {
-  try {
-    const parsedItinerary: Itinerary = typeof trek.itinerary === 'string'
-      ? JSON.parse(trek.itinerary)
-      : trek.itinerary
-
-    itineraryData = parsedItinerary?.days || []
-  } catch {
-    itineraryData = []
+  // Define the expected itinerary structure
+  type Itinerary = {
+    days: {
+      day: number
+      activities: string[]
+    }[]
   }
-}
 
+  let itineraryData: Itinerary['days'] = []
+
+  if ('itinerary' in trek && trek.itinerary) {
+    try {
+      const parsedItinerary: Itinerary = typeof trek.itinerary === 'string'
+        ? JSON.parse(trek.itinerary)
+        : trek.itinerary
+
+      itineraryData = parsedItinerary?.days || []
+    } catch {
+      itineraryData = []
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -182,7 +181,10 @@ if ('itinerary' in trek && trek.itinerary) {
                 <p className="text-green-700 text-sm mb-4">
                   Price varies based on group size and services
                 </p>
-                <button className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                <button 
+                  suppressHydrationWarning
+                  className="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors"
+                >
                   Book This Trek
                 </button>
               </div>

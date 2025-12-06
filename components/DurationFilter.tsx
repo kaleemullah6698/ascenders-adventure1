@@ -31,6 +31,7 @@ export default function DurationFilter({ minDuration, maxDuration, onChange }: D
               max="29"
               value={minDuration}
               onChange={(e) => handleMinChange(parseInt(e.target.value) || 1)}
+              suppressHydrationWarning
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
             />
           </div>
@@ -42,6 +43,7 @@ export default function DurationFilter({ minDuration, maxDuration, onChange }: D
               max="30"
               value={maxDuration}
               onChange={(e) => handleMaxChange(parseInt(e.target.value) || 30)}
+              suppressHydrationWarning
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
             />
           </div>
@@ -58,6 +60,7 @@ export default function DurationFilter({ minDuration, maxDuration, onChange }: D
               max="30"
               value={minDuration}
               onChange={(e) => handleMinChange(parseInt(e.target.value))}
+              suppressHydrationWarning
               className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
             />
             <input
@@ -66,6 +69,7 @@ export default function DurationFilter({ minDuration, maxDuration, onChange }: D
               max="30"
               value={maxDuration}
               onChange={(e) => handleMaxChange(parseInt(e.target.value))}
+              suppressHydrationWarning
               className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
             />
           </div>

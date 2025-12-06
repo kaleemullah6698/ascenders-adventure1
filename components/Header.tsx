@@ -177,6 +177,7 @@ export default function Header() {
                   value={searchQuery}
                   onChange={handleSearchChange}
                   onFocus={handleInputFocus}
+                  suppressHydrationWarning
                   className="pl-4 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent w-64"
                 />
                 <button
@@ -292,6 +293,7 @@ export default function Header() {
                   placeholder="Search treks..."
                   value={searchQuery}
                   onChange={handleSearchChange}
+                  suppressHydrationWarning
                   className="w-full pl-4 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 />
                 <button
