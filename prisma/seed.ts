@@ -13,56 +13,56 @@ async function main() {
     console.log('🗄️ Creating 100+ treks across Pakistan...')
 
     const treks = [
-  // THALO PASS TREK - MUST BE FIRST
-  {
-    name: "Thalo Pass Trek",
-    description: "An adventurous trek through the beautiful Dir/Chitral region...",
-    image: "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800",
-    duration: 5,
-    difficulty: Difficulty.HARD,
-    minCost: 100000,
-    maxCost: 140000,
-    season: [Season.SUMMER],
-    region: Region.CHITRAL,
-    serviceType: ServiceType.STANDARD,
-    bestMonths: ["June", "July", "August"],
-    elevation: 4250,
-    distance: 60,
-    groupSize: 8,
-    highlights: [
-      "Meadows of Kumrat",
-      "Zaghi Lake", 
-      "Bashkar Lake",
-      "Wild Flower",
-      "Rainbow Waterfall",
-      "Kumrat Valley",
-      "Sor Laspur"
-    ]
-  },
-  // LOHIGOL PASS - MUST BE SECOND
-  {
-    name: "Lohigol Pass",
-    description: "A relatively shorter but equally mesmerizing trek through Chitral's stunning landscapes...",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800",
-    duration: 3,
-    difficulty: Difficulty.MODERATE,
-    minCost: 70000,
-    maxCost: 90000,
-    season: [Season.SUMMER],
-    region: Region.CHITRAL,
-    serviceType: ServiceType.STANDARD,
-    bestMonths: ["May", "June", "July"],
-    elevation: 4300,
-    distance: 39,
-    groupSize: 8,
-    highlights: [
-      "Lush Green Meadows",
-      "Golen Valley",
-      "Madaklasht Valley",
-      "Golen Lake",
-      "Lohigol Pass"
-    ]
-  },
+      // THALO PASS TREK - MUST BE FIRST
+      {
+        name: "Thalo Pass Trek",
+        description: "An adventurous trek through the beautiful Dir/Chitral region...",
+        image: "/images/thalopasstrek.jpg",
+        duration: 5,
+        difficulty: Difficulty.HARD,
+        minCost: 100000,
+        maxCost: 140000,
+        season: [Season.SUMMER],
+        region: Region.CHITRAL,
+        serviceType: ServiceType.STANDARD,
+        bestMonths: ["June", "July", "August"],
+        elevation: 4250,
+        distance: 60,
+        groupSize: 8,
+        highlights: [
+          "Meadows of Kumrat",
+          "Zaghi Lake", 
+          "Bashkar Lake",
+          "Wild Flower",
+          "Rainbow Waterfall",
+          "Kumrat Valley",
+          "Sor Laspur"
+        ]
+      },
+      // LOHIGOL PASS - MUST BE SECOND
+      {
+        name: "Lohigol Pass",
+        description: "A relatively shorter but equally mesmerizing trek through Chitral's stunning landscapes...",
+        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800",
+        duration: 3,
+        difficulty: Difficulty.MODERATE,
+        minCost: 70000,
+        maxCost: 90000,
+        season: [Season.SUMMER],
+        region: Region.CHITRAL,
+        serviceType: ServiceType.STANDARD,
+        bestMonths: ["May", "June", "July"],
+        elevation: 4300,
+        distance: 39,
+        groupSize: 8,
+        highlights: [
+          "Lush Green Meadows",
+          "Golen Valley",
+          "Madaklasht Valley",
+          "Golen Lake",
+          "Lohigol Pass"
+        ]
+      },
       {
         name: "Gasherbrum IV Expedition",
         description: "Technical expedition to one of the most difficult 8000m peaks.",
@@ -80,7 +80,6 @@ async function main() {
         groupSize: 4,
         highlights: ["Gasherbrum IV Summit", "Baltoro Glacier", "Technical Climbing"]
       },
-
       // Hard Treks (20)
       {
         name: "Snow Lake Trek",
@@ -133,7 +132,6 @@ async function main() {
         groupSize: 6,
         highlights: ["Biafo Glacier", "Hispar Glacier", "Snow Lake"]
       },
-
       // Moderate Treks (40)
       {
         name: "Fairy Meadows & Nanga Parbat Base Camp",
@@ -220,7 +218,6 @@ async function main() {
         groupSize: 12,
         highlights: ["Saiful Muluk Lake", "Lulusar Lake", "Kaghan Meadows"]
       },
-
       // Easy Treks (25)
       {
         name: "Shangrila Resort Skardu",
@@ -307,7 +304,6 @@ async function main() {
         groupSize: 25,
         highlights: ["Murree Mall", "Pindi Point", "Hills View"]
       },
-
       // Adding more diverse treks to reach 100+
       {
         name: "Makra Peak Trek",
@@ -342,22 +338,46 @@ async function main() {
         distance: 55,
         groupSize: 8,
         highlights: ["Musa ka Musalla Summit", "Panoramic Views", "Challenging Ascent"]
-      },
-      // ... (Adding 80+ more treks with similar structure across all regions and difficulties)
+      }
     ]
 
     console.log(`🗄️ Seeding ${treks.length} treks...`)
 
+    let successCount = 0
+    let errorCount = 0
+
     for (const data of treks) {
-      const trek = await prisma.trek.create({
-        data: data
-      })
-      console.log(`✅ Added: ${trek.name}`)
+      try {
+        const trek = await prisma.trek.create({
+          data: data
+        })
+        console.log(`✅ Added: ${trek.name}`)
+        successCount++
+      } catch (error: any) {
+        console.log(`❌ FAILED: ${data.name}`)
+        console.log(`   Error: ${error.message}`)
+        
+        // Log specific field if it's a data error
+        if (error.message.includes('region')) {
+          console.log(`   Region value: ${data.region}`)
+        }
+        if (error.message.includes('season')) {
+          console.log(`   Season value: ${JSON.stringify(data.season)}`)
+        }
+        
+        errorCount++
+      }
     }
 
+    console.log(`\n📊 Results: ${successCount} successful, ${errorCount} failed`)
     const count = await prisma.trek.count()
     console.log('🎉 Database seeded successfully!')
     console.log(`📊 Total treks in database: ${count}`)
+
+    // If we have errors, show which treks failed
+    if (errorCount > 0) {
+      console.log('\n⚠️  Some treks failed to seed. Check errors above.')
+    }
 
   } catch (error) {
     console.error('❌ Seeding failed:', error)

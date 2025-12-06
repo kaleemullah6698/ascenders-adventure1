@@ -1,0 +1,68 @@
+[
+  {
+    "id": "cmiuk0zqo0000wa28izamg51h",
+    "name": "Thalo Pass Trek",
+    "description": "An adventurous trek through the beautiful Dir/Chitral region, featuring stunning meadows, crystal clear lakes, and breathtaking waterfalls. The Thalo Pass offers challenging terrain with rewarding views.",
+    "image": "https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800",
+    "duration": 5,
+    "difficulty": "HARD",
+    "minCost": 100000,
+    "maxCost": 140000,
+    "season": [
+      "SUMMER"
+    ],
+    "region": "CHITRAL",
+    "serviceType": "STANDARD",
+    "bestMonths": [
+      "June",
+      "July",
+      "August"
+    ],
+    "elevation": 4250,
+    "distance": 60,
+    "groupSize": 8,
+    "highlights": [
+      "Meadows of Kumrat",
+      "Zaghi Lake",
+      "Bashkar Lake",
+      "Wild Flower",
+      "Rainbow Waterfall",
+      "Kumrat Valley",
+      "Sor Laspur"
+    ],
+    "createdAt": "2025-12-06T17:15:16.078Z",
+    "updatedAt": "2025-12-06T17:15:16.078Z"
+  },
+  {
+    "id": "cmiuk104k0001wa28s10jehnf",
+    "name": "Lohigol Pass",
+    "description": "A relatively shorter but equally mesmerizing trek through Chitral's stunning landscapes. The Lohigol Pass trek offers beautiful valleys, alpine lakes, and panoramic mountain views.",
+    "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800",
+    "duration": 3,
+    "difficulty": "MODERATE",
+    "minCost": 70000,
+    "maxCost": 90000,
+    "season": [
+      "SUMMER"
+    ],
+    "region": "CHITRAL",
+    "serviceType": "STANDARD",
+    "bestMonths": [
+      "May",
+      "June",
+      "July"
+    ],
+    "elevation": 4300,
+    "distance": 39,
+    "groupSize": 8,
+    "highlights": [
+      "Lush Green Meadows",
+      "Golen Valley",
+      "Madaklasht Valley",
+      "Golen Lake",
+      "Lohigol Pass"
+    ],
+    "createdAt": "2025-12-06T17:15:16.580Z",
+    "updatedAt": "2025-12-06T17:15:16.580Z"
+  }
+]
