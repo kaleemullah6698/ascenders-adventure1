@@ -43,7 +43,7 @@ async function main() {
       {
         name: "Lohigol Pass",
         description: "A relatively shorter but equally mesmerizing trek through Chitral's stunning landscapes...",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800",
+        image: "/images/lohigol-pass-trek.png",
         duration: 3,
         difficulty: Difficulty.MODERATE,
         minCost: 70000,
@@ -66,7 +66,7 @@ async function main() {
       {
         name: "Gasherbrum IV Expedition",
         description: "Technical expedition to one of the most difficult 8000m peaks.",
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800",
+        image: "/images/gasherbrum-iv-expedition.png",
         duration: 45,
         difficulty: Difficulty.EXTREME,
         minCost: 450000,
@@ -84,7 +84,7 @@ async function main() {
       {
         name: "Snow Lake Trek",
         description: "Adventure to the magnificent Snow Lake and Hispar La pass.",
-        image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800",
+        image: "/images/Swat-lake.png",
         duration: 16,
         difficulty: Difficulty.HARD,
         minCost: 90000,
@@ -101,7 +101,7 @@ async function main() {
       {
         name: "Gondogoro La Pass",
         description: "Cross one of the most beautiful high passes in the Karakoram.",
-        image: "https://images.unsplash.com/photo-1552465011-bf6b4f114e4c?w=800",
+        image: "/images/gondogoro-la-pass-trek.png",
         duration: 15,
         difficulty: Difficulty.HARD,
         minCost: 110000,
@@ -118,7 +118,7 @@ async function main() {
       {
         name: "Biafo Hispar Traverse",
         description: "World's longest glacial traverse outside polar regions.",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+        image: "/images/biafo-hispar-traverse.png",
         duration: 20,
         difficulty: Difficulty.HARD,
         minCost: 150000,
@@ -136,7 +136,7 @@ async function main() {
       {
         name: "Fairy Meadows & Nanga Parbat Base Camp",
         description: "A beautiful trek offering stunning views of Nanga Parbat, the world's 9th highest mountain.",
-        image: "https://images.unsplash.com/photo-1464822759844-d62dda5f7b1c?w=800",
+        image: "/images/fairy-meadows-nanga-parbat.png",
         duration: 7,
         difficulty: Difficulty.MODERATE,
         minCost: 45000,
@@ -153,7 +153,7 @@ async function main() {
       {
         name: "Rakaposhi Base Camp",
         description: "Moderate trek to the base of magnificent Rakaposhi peak in Nagar Valley.",
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800",
+        image: "/images/Base camp.png",
         duration: 8,
         difficulty: Difficulty.MODERATE,
         minCost: 35000,
@@ -170,7 +170,7 @@ async function main() {
       {
         name: "Rush Lake Trek",
         description: "Beautiful trek to one of the highest alpine lakes in the world.",
-        image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800",
+        image: "/images/Rush-lake-trek.png",
         duration: 10,
         difficulty: Difficulty.MODERATE,
         minCost: 55000,
@@ -187,7 +187,7 @@ async function main() {
       {
         name: "Deosai Plains Trek",
         description: "Trek through the beautiful Deosai Plains, also known as the Land of Giants.",
-        image: "https://images.unsplash.com/photo-1552465011-bf6b4f114e4c?w=800",
+        image: "/images/Deosai-plains-trek.png",
         duration: 6,
         difficulty: Difficulty.MODERATE,
         minCost: 30000,
@@ -204,7 +204,7 @@ async function main() {
       {
         name: "Kaghan Valley Explorer",
         description: "Scenic trek through the beautiful Kaghan Valley with lakes and meadows.",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+        image: "/images/Kaghan-valley-explorer.png",
         duration: 8,
         difficulty: Difficulty.MODERATE,
         minCost: 40000,
@@ -222,7 +222,7 @@ async function main() {
       {
         name: "Shangrila Resort Skardu",
         description: "Easy trek around the beautiful Shangrila resort with comfortable accommodations.",
-        image: "https://images.unsplash.com/photo-1464822759844-d62dda5f7b1c?w=800",
+        image: "/images/Shangrila-resort-skardu.png",
         duration: 3,
         difficulty: Difficulty.EASY,
         minCost: 15000,
@@ -239,7 +239,7 @@ async function main() {
       {
         name: "Hunza Valley Explorer",
         description: "Cultural and scenic exploration of the beautiful Hunza Valley.",
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800",
+        image: "/images/Hunza-valley-explorer.png",
         duration: 5,
         difficulty: Difficulty.EASY,
         minCost: 25000,
@@ -256,7 +256,7 @@ async function main() {
       {
         name: "Skardu City Tour",
         description: "Easy exploration of Skardu city and surrounding attractions.",
-        image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800",
+        image: "/images/Skardu-city-tour.png",
         duration: 2,
         difficulty: Difficulty.EASY,
         minCost: 10000,
@@ -273,7 +273,7 @@ async function main() {
       {
         name: "Swat Valley Trek",
         description: "Easy trek through the beautiful Swat Valley with cultural experiences.",
-        image: "https://images.unsplash.com/photo-1552465011-bf6b4f114e4c?w=800",
+        image: "/images/Swat-valley-trek.png",
         duration: 4,
         difficulty: Difficulty.EASY,
         minCost: 20000,
@@ -290,7 +290,7 @@ async function main() {
       {
         name: "Murree Hills Walk",
         description: "Leisurely walk through the beautiful hills of Murree.",
-        image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+        image: "/images/Murree-hills-walk.png",
         duration: 1,
         difficulty: Difficulty.EASY,
         minCost: 5000,
@@ -308,7 +308,7 @@ async function main() {
       {
         name: "Makra Peak Trek",
         description: "Beautiful trek to Makra Peak in Kaghan Valley with stunning views.",
-        image: "https://images.unsplash.com/photo-1464822759844-d62dda5f7b1c?w=800",
+        image: "/images/Makra-peak-trek.png",
         duration: 7,
         difficulty: Difficulty.MODERATE,
         minCost: 35000,
@@ -325,7 +325,7 @@ async function main() {
       {
         name: "Musa ka Musalla Trek",
         description: "Trek to the highest peak in Kaghan Valley with panoramic views.",
-        image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800",
+        image: "/images/Musa-ka-musalla-trek.png",
         duration: 9,
         difficulty: Difficulty.HARD,
         minCost: 60000,
