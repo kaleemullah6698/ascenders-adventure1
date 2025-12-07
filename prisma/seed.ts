@@ -153,7 +153,7 @@ async function main() {
       {
         name: "Rakaposhi Base Camp",
         description: "Moderate trek to the base of magnificent Rakaposhi peak in Nagar Valley.",
-        image: "/images/Base camp.png",
+        image: "/images/base-camp.png",
         duration: 8,
         difficulty: Difficulty.MODERATE,
         minCost: 35000,
