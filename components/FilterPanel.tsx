@@ -59,23 +59,27 @@ export default function FilterPanel({ trekCount }: { trekCount: number }) {
   ].reduce((a, b) => a + b, 0)
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6 mb-8">
-      <div className="flex items-center justify-between mb-6">
+    <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-6 mb-8">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
         <div className="flex items-center space-x-3">
-          <Filter className="h-6 w-6 text-green-600" />
-          <h3 className="text-xl font-semibold text-gray-900">Filter Treks</h3>
+          <div className="bg-green-100 p-2 rounded-lg">
+            <Filter className="h-6 w-6 text-green-600" />
+          </div>
+          <h3 className="text-xl font-bold text-gray-900">Filter Treks</h3>
           {activeFilterCount > 0 && (
-            <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+            <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-sm">
               {activeFilterCount} active
             </span>
           )}
         </div>
         <div className="flex items-center space-x-4">
-          <span className="text-lg font-semibold text-gray-700">{trekCount} treks found</span>
+          <span className="text-lg font-bold text-gray-900 bg-gray-100 px-4 py-2 rounded-lg">
+            {trekCount} treks
+          </span>
           {activeFilterCount > 0 && (
             <button
               onClick={clearAllFilters}
-              className="text-red-600 hover:text-red-800 flex items-center font-medium"
+              className="text-red-600 hover:text-white hover:bg-red-600 flex items-center font-semibold px-4 py-2 rounded-lg transition-colors border-2 border-red-600"
             >
               <X className="h-4 w-4 mr-1" />
               Clear all
