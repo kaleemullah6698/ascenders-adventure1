@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Trek {
-  id          String   @id @default(cuid())
+  id          String      @id @default(cuid())
   name        String
   description String
   image       String
@@ -24,9 +24,9 @@ model Trek {
   distance    Float
   groupSize   Int
   highlights  String[]
-  itinerary   Json?    // <-- Add this
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  itinerary   Json?
 
   @@index([difficulty])
   @@index([region])
